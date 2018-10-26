@@ -1,15 +1,27 @@
-package org.springframework.rest;
+package org.springframework.model;
 
 import java.net.URL;
 import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonAutoDetect;
 
 
 //@XmlRootElement
 @JsonAutoDetect
+@Entity
+@Table(name="PERSON")
 public final class Product {
 
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int productId;
 	private String productName;
 	public Product(int productId, String productName, String productCode, Date releaseDate, String description,
